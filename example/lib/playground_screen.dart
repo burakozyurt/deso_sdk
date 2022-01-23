@@ -1,6 +1,6 @@
 import 'package:deso_sdk/deso_sdk.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:html' as html;
 class PlaygroundScreen extends StatefulWidget {
   const PlaygroundScreen({Key? key}) : super(key: key);
 
@@ -44,7 +44,7 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
 
     // Optional - Set DeSo Node host
     deso.client.init(
-      host: 'diamondapp.com',
+      host: 'bitclout.com',
       apiVersion: 0,
     );
   }
@@ -80,14 +80,16 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
               const Divider(),
               ElevatedButton.icon(
                 icon: const Icon(Icons.send),
-                label: const Text('Exchange Rate'),
-                onPressed: () => call(deso.general.exchangeRate()),
+                label: const Text('User'),
+                onPressed: () => call(deso.user.singleProfile(publicKey: 'BC1YLhyxgsRdLqgNLg6JnHaHjS9vE4J6PqyRiVrjNn53gUCHPsyZKJH',username: 'burki')),
               ),
               const Divider(),
               ElevatedButton.icon(
                 icon: const Icon(Icons.send),
-                label: const Text('Profiles'),
-                onPressed: () => call(deso.general.appState()),
+                label: const Text('Test'),
+                onPressed: (){
+                  html.window.open('https://identity.deso.org/log-in?accessLevelRequest=2', 'new tab');
+                }
               ),
               const Divider(),
               ElevatedButton.icon(
